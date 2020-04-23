@@ -1,0 +1,22 @@
+ENVI
+description = {
+  File Resize Result, x resize factor: 1.000000, y resize factor: 1.000000.
+  [Thu Apr 23 13:22:09 2020]}
+samples = 1383
+lines   = 2469
+bands   = 1
+header offset = 0
+file compression = 1
+file type = ENVI Standard
+data type = 4
+interleave = bsq
+sensor type = Unknown
+byte order = 0
+x start = 752
+y start = 1026
+map info = {UTM, 1.000, 1.000, 325920.641, 4410533.263, 3.0000000000e+000, 3.0000000000e+000, 11, North, WGS-84, units=Meters}
+coordinate system string = {PROJCS["WGS_1984_UTM_Zone_11N",GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137.0,298.257223563]],PRIMEM["Greenwich",0.0],UNIT["Degree",0.0174532925199433]],PROJECTION["Transverse_Mercator"],PARAMETER["false_easting",500000.0],PARAMETER["false_northing",0.0],PARAMETER["central_meridian",-117.0],PARAMETER["scale_factor",0.9996],PARAMETER["latitude_of_origin",0.0],UNIT["Meter",1.0]]}
+wavelength units = Unknown
+data ignore value = -3.00000000e+000
+band names = {
+ Deformation [mm/year]}
