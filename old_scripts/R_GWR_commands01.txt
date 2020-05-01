@@ -1,0 +1,49 @@
+require("mgwrsar")
+
+# GWR_m4_csv <- read.csv("GWR_test_m4.csv")
+# small_frame <- GWR_m4_csv
+
+small_frame <- GWR_train_m
+#s1_coords = as.matrix(GWR_train_m[,c("x","y")])
+s1_coords = as.matrix(small_frame[,c("x","y")])
+require(mgwrsar)
+
+W=KNN(s1_coords,8)
+
+system.time( {
+  model_GWR <- MGWRSAR( formula = "Geothermal ~ Kaolinite + Gypsum + Temperature",
+						data = small_frame, coord = s1_coords,
+						fixed_vars = "Intercept", H=20, kernels = c('gauss'),
+						Model = 'GWR', control = list())
+})
+
+#     user   system  elapsed
+# 1128.541    2.328 1131.155
+
+
+
+# GWR_pts <- rbind(GWR_train_shuffle, GWR_test_shuffle)
+
+
+
+coordinates(GWR_pts) <- ~ x+y
+proj4string(GWR_pts) <- c("+proj=utm +zone=11 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0")
+
+
+#####################
+#####################
+# Linear Model      #
+#####################
+#####################
+GWR_pts <- rbind(GWR_train_shuffle, GWR_test_shuffle)
+coordinates(GWR_pts) < ~ x+y
+coordinates(GWR_pts) <- ~ x+y
+crs(def_2019_clean)
+proj4string(GWR_pts) <- crs(def_2019_clean)
+gridded(GWR_pts) <- TRUE
+spplot(GWR_pts)
+
+model01_train <- lm(Geothermal ~ Kaolinite + Chalcedony + Gypsum + Temperature + Faults, data = as.data.frame(GWR_train_shuffle))
+model02_train <- lm(Geothermal ~ Kaolinite + Gypsum + Temperature + Faults, data = as.data.frame(GWR_train_shuffle))
+model03_train <- lm(Geothermal ~ Chalcedony + Gypsum + Temperature + Faults, data = as.data.frame(GWR_train_shuffle))
+model04_train <- lm(Geothermal ~ Kaolinite + Chalcedony + Gypsum + Temperature + Faults + Deformation, data = as.data.frame(GWR_train_shuffle))

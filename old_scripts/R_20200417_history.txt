@@ -1,0 +1,512 @@
+GWR_ngeo_split <- sample.split(GWR_ngeo_df,SplitRatio=0.7)
+set.seed(27)
+require(caTools)
+GWR_geo_split <- sample.split(GWR_geo_df[1],SplitRatio=0.7)
+GWR_ngeo_split <- sample.split(GWR_ngeo_df[1],SplitRatio=0.7)
+GWR_geo_train <- GWR_geo_df[GWR_geo_split,]
+GWR_geo_test <- GWR_geo_df[!GWR_geo_split,]
+GWR_ngeo_train <- GWR_geo_df[GWR_ngeo_split,]
+GWR_ngeo_test <- GWR_geo_df[!GWR_ngeo_split,]
+GWR_train <- rbind(GWR_geo_train, GWR_ngeo_train)
+GWR_test <- rbind(GWR_geo_test, GWR_ngeo_test)
+rows <- sample(GWR_train)
+GWR_train_shuffle<-GWR_train[GWR_train,]
+rows <- sample(GWR_test)
+GWR_test_shuffle<-GWR_test[GWR_test,]
+rows <- sample(GWR_train)
+GWR_train_shuffle<-GWR_train[rows,]
+rows <- sample(GWR_test)
+GWR_test_shuffle<-GWR_test[rows,]
+rows <- sample(nrow(GWR_train))
+GWR_train_shuffle<-GWR_train[rows,]
+rows <- sample(nrow(GWR_test))
+GWR_test_shuffle<-GWR_test[rows,]
+View(GWR_test_shuffle)
+nrow(GWR_train)
+rows <- sample(1:nrow(GWR_test))
+sample(3)
+rows <- sample(nrow(GWR_test))
+rows
+nrow(GWR_test)
+View(GWR_geo_split)
+GWR_geo_split <- sample.split(GWR_geo_df$Geothermal,SplitRatio=0.7)
+GWR_geo_split <- sample.split(GWR_geo_df$Geothermal,SplitRatio=0.7)
+GWR_ngeo_split <- sample.split(GWR_ngeo_df$Geothermal,SplitRatio=0.7)
+GWR_geo_train <- GWR_geo_df[GWR_geo_split,]
+GWR_geo_test <- GWR_geo_df[!GWR_geo_split,]
+GWR_ngeo_train <- GWR_geo_df[GWR_ngeo_split,]
+GWR_ngeo_test <- GWR_geo_df[!GWR_ngeo_split,]
+GWR_train <- rbind(GWR_geo_train, GWR_ngeo_train)
+GWR_test <- rbind(GWR_geo_test, GWR_ngeo_test)
+rows <- sample(nrow(GWR_train))
+GWR_train_shuffle<-GWR_train[rows,]
+rows <- sample(nrow(GWR_test))
+GWR_test_shuffle<-GWR_test[rows,]
+View(GWR_train_shuffle)
+View(GWR_train)
+rm(GWR_train_shuffle, GWR_test_shuffle)
+rows <- sample(nrow(GWR_train))
+View(rows)
+rm(GWR_train_shuffle, GWR_test_shuffle)
+rows <- sample(nrow(GWR_train))
+GWR_train_shuffle<-GWR_train[rows,]
+rows <- sample(nrow(GWR_test))
+GWR_test_shuffle<-GWR_test[rows,]
+View(GWR_test_shuffle)
+View(GWR_train_shuffle)
+View(GWR_train_shuffle)
+View(GWR_train)
+View(GWR_test)
+GWR_geo_split <- sample.split(GWR_geo_df$Geothermal,SplitRatio=0.7)
+GWR_ngeo_split <- sample.split(GWR_ngeo_df$Geothermal,SplitRatio=0.7)
+rm(GWR_geo_train, GWR_geo_test)
+rm(GWR_ngeo_train, GWR_ngeo_test)
+GWR_geo_train <- GWR_geo_df[GWR_geo_split,]
+GWR_geo_test <- GWR_geo_df[!GWR_geo_split,]
+GWR_ngeo_train <- GWR_geo_df[GWR_ngeo_split,]
+GWR_ngeo_test <- GWR_geo_df[!GWR_ngeo_split,]
+View(GWR_ngeo_test)
+View(GWR_geo_df)
+View(GWR_geo_df)
+View(GWR_geo_split)
+View(GWR_geo_df[GWR_geo_split,])
+View(GWR_geo_df[!GWR_geo_split,])
+View(GWR_geo_train)
+View(GWR_geo_test)
+View(GWR_ngeo_train)
+View(GWR_ngeo_df)
+rm(GWR_geo_df, GWR_ngeo_df, GWR_valid_df)
+GWR_geo_df <- GWR_df4[idx_geo_ok,]
+GWR_ngeo_df <- GWR_df4[idx_ngeo_ok,]
+idx_valid <- idx_geo_ok | idx_ngeo_ok
+GWR_valid_df <- GWR_df4[idx_valid,]
+View(GWR_ngeo_df)
+set.seed(27)
+require(caTools)
+GWR_geo_split <- sample.split(GWR_geo_df$Geothermal,SplitRatio=0.7)
+GWR_ngeo_split <- sample.split(GWR_ngeo_df$Geothermal,SplitRatio=0.7)
+rm(GWR_geo_train, GWR_geo_test)
+rm(GWR_ngeo_train, GWR_ngeo_test)
+GWR_geo_train <- GWR_geo_df[GWR_geo_split,]
+GWR_geo_test <- GWR_geo_df[!GWR_geo_split,]
+GWR_ngeo_train <- GWR_geo_df[GWR_ngeo_split,]
+GWR_ngeo_test <- GWR_geo_df[!GWR_ngeo_split,]
+View(GWR_ngeo_test)
+View(GWR_ngeo_df)
+View(GWR_ngeo_test)
+View(GWR_ngeo_split )
+View(GWR_ngeo_df)
+rm(GWR_geo_train, GWR_geo_test)
+rm(GWR_ngeo_train, GWR_ngeo_test)
+GWR_geo_train <- GWR_geo_df[GWR_geo_split,]
+GWR_geo_test <- GWR_geo_df[!GWR_geo_split,]
+GWR_ngeo_train <- GWR_ngeo_df[GWR_ngeo_split,]
+GWR_ngeo_test <- GWR_ngeo_df[!GWR_ngeo_split,]
+rm(GWR_train, GWR_test)
+GWR_train <- rbind(GWR_geo_train, GWR_ngeo_train)
+GWR_test <- rbind(GWR_geo_test, GWR_ngeo_test)
+rm(GWR_train_shuffle, GWR_test_shuffle)
+train_rows <- sample(nrow(GWR_train))
+GWR_train_shuffle<-GWR_train[train_rows,]
+test_rows <- sample(nrow(GWR_test))
+GWR_test_shuffle<-GWR_test[test_rows,]
+View(GWR_test_shuffle)
+View(GWR_train_shuffle)
+GWR_test_m <- GWR_test_shuffle
+GWR_train_m <- GWR_train_shuffle
+View(GWR_train_m)
+write.csv(GWR_train_m, "GWR_train.csv")
+colnames(GWR_train_m)
+ncol(GWR_train_m)
+table(GWR_train_m)
+table(head(GWR_train_m))
+write.csv(GWR_test_m, "GWR_test.csv", row.names=FALSE)
+c(1:8,10)
+write.csv(GWR_test_m[c(1:8,10)], "GWR_test_m1.csv", row.names=FALSE)
+write.csv(GWR_train_m[c(1:8,10)], "GWR_train_m1.csv", row.names=FALSE)
+write.csv(GWR_test_m[c(1:8,10)], "GWR_test_m1.csv", row.names=FALSE)
+write.csv(GWR_train_m[c(1:3,5:8,10)], "GWR_train_m2.csv", row.names=FALSE)
+write.csv(GWR_test_m[c(1:3,5:8,10)], "GWR_test_m2.csv", row.names=FALSE)
+write.csv(GWR_train_m[c(1:4,5:8,10)], "GWR_train_m3.csv", row.names=FALSE)
+write.csv(GWR_test_m[c(1:4,6:8,10)], "GWR_test_m3.csv", row.names=FALSE)
+write.csv(GWR_train_m, "GWR_train_m4.csv", row.names=FALSE)
+write.csv(GWR_test_m, "GWR_test_m4.csv", row.names=FALSE)
+s1_coords = as.matrix(GWR_train_m[,c("x","y")])
+View(s1_coords)
+W=KNN(s1_coord,8)
+require(raster)
+W=KNN(s1_coord,8)
+require(spgwr)
+W=KNN(s1_coord,8)
+require(caTools)
+W=KNN(s1_coord,8)
+require(ape)
+W=KNN(s1_coord,8)
+require(tmap)
+W=KNN(s1_coord,8)
+require(vif)
+require(VIF)
+W=KNN(s1_coord,8)
+require(sf)
+W=KNN(s1_coord,8)
+require(mgwrsar)
+W=KNN(s1_coord,8)
+require(rgdal)
+W=KNN(s1_coord,8)
+s1_coord = as.matrix(GWR_train_m[,c("x","y")])
+W=KNN(s1_coord,8)
+View(W)
+W[1][2]
+View(W@x)
+View(W@p)
+save.image("D:/R_latest/R_gwr/R_gwr_variables.RData")
+small_frame <- GWR_train_m
+s1_coords = as.matrix(GWR_train_m[,c("x","y")])
+require(mgwrsar)
+W=KNN(s1_coords,8)
+system.time( {
+model_GWR <- MGWRSAR( formula = "Geothermal ~ Kaolinite + Gypsum + Temperature",
+data = small_frame, coord = s1_coords,
+fixed_vars = "Intercept", H=20, kernels = c('gauss'),
+Model = 'GWR', control = list())
+})
+View(GWR_train)
+rm(GWR_pts)
+GWR_pts <- GWR_df4
+coordinates(GWR_pts) < ~ x+y
+rm(GWR_pts)
+GWR_pts <- rbind(GWR_train_shuffle, GWR_test_shuffle)
+coordinates(GWR_pts) < ~ x+y
+View(GWR_pts)
+idx <- is.na(GWR_pts["x"])
+sum(idx)
+idx <- is.na(GWR_pts["y"])
+sum(idx)
+idx <- is.na(GWR_pts$x)
+sum(idx)
+idx <- is.na(GWR_pts$y)
+sum(idx)
+idx <- is.na(GWR_pts$x+GWR_pts$y)
+sum(idx)
+sum(GWR_pts$x+GWR_pts$y)
+coordinates(GWR_pts) <- ~ x+y
+crs(def_2019_clean)
+proj4string(GWR_pts) <- crs(def_2019_clean)
+gridded(GWR_pts) <- TRUE
+spplot(GWR_pts)
+plot(GWR_pts)
+plot(GWR_pts[["Faults"]])
+plot(GWR_pts["Chalcedony"])
+spplot(GWR_pts[c("Kaolinite", "Chalcedony", "Gypsum")])
+model04 <- lm(Geothermal ~., data = as.data.frame(GWR_pts))
+summary(model04)
+model04_train <- lm(Geothermal ~., data = as.data.frame(GWR_train_shuffle))
+summary(model04_train)
+model04_train <- lm(Geothermal ~ Kaolinite + Chalcedony + Gypsum + Temperature + Faults + Deformation, data = as.data.frame(GWR_train_shuffle))
+summary(model04_train)
+model01_train <- lm(Geothermal ~ Kaolinite + Chalcedony + Gypsum + Temperature + Faults, data = as.data.frame(GWR_train_shuffle))
+model02_train <- lm(Geothermal ~ Kaolinite + Gypsum + Temperature + Faults, data = as.data.frame(GWR_train_shuffle))
+model03_train <- lm(Geothermal ~ Chalcedony + Gypsum + Temperature + Faults, data = as.data.frame(GWR_train_shuffle))
+summary(model01_train)
+summary(model02_train)
+summary(model03_train)
+summary(model04_train)
+GWR_minerals <- GWR_pts[["Kaolinte", "Chalcedony", "Gypsum"]]
+GWR_minerals <- GWR_pts[[c("Kaolinte", "Chalcedony", "Gypsum")]]
+GWR_minerals <- GWR_pts[c("Kaolinte", "Chalcedony", "Gypsum")]
+GWR_minerals <- GWR_pts[c("Kaolinite", "Chalcedony", "Gypsum")]
+idx<-GWR_minerals>0
+idx<-GWR_minerals["Kaolinite"]>0
+idx<-(GWR_minerals["Kaolinite"]>0)
+extent(GWR_minerals)
+GWR_r_min <- projectRaster(GWR_minerals)
+GWR_r_min <- projectRaster(GWR_minerals, crs=crs(def_2019_clean))
+View(GWR_minerals)
+idx<-(GWR_minerals$Kaolinite>0)
+GWR_minerals$Kaolinite[idx]<-1
+GWR_minerals$Chalcedony[(GWR_minerals$Chalcedony>0)]<-1
+GWR_minerals$Gypsum[(GWR_minerals$Gypsum>0)]<-1
+spplot(GWR_minerals)
+spplot(GWR_minerals, col.regions=c("black", "red"))
+spplot(GWR_pts$Deformation)
+spplot(GWR_pts["Deformation"])
+spplot(GWR_pts["Geothermal"], col.regions = c("yellow", "blue"))
+spplot(GWR_pts["Faults"])
+spplot(GWR_pts["Temperature"])
+GWR_train_pts <- GWR_train_shuffle
+coordinates((GWR_train_pts)) <- ~x+y
+coordinates(GWR_train_pts) <- ~x+y
+proj4string(GWR_train_pts) <- crs(def_2019_clean)
+gridded(GWR_train_pts) <- TRUE
+plot(GWR_train_pts["Geothermal"])
+spplot(GWR_train_pts["Geothermal"], col.regions = c("yellow", "blue"))
+GWR_test_pts <- GWR_test_shuffle
+coordinates(GWR_test_pts) <- ~x+y
+proj4string(GWR_test_pts) <- crs(def_2019_clean)
+gridded(GWR_test_pts) <- TRUE
+spplot(GWR_test_pts["Geothermal"], col.regions = c("yellow", "blue"))
+require(rasterLocalEstimates)
+install.packages("rasterLocalEstimates")
+install.packages("rasterKernelEstimates")
+plot(GWR_all[["Chalcedony"]])
+Chalcedony_raster <- GWR_all[["Chalcedony"]]
+W <- raster::focalWeight(Chalcedony_raster,c(1,0.04),type='Gauss')
+View(W)
+W <- focalWeight(Chalcedony_raster,c(9,0.04),type='Gauss')
+View(W)
+rm(W)
+W <- focalWeight(Chalcedony_raster,c(9,0.04),type='Gauss')
+W <- raster::focalWeight(Chalcedony_raster,c(9,0.04),type='Gauss')
+View(W)
+rm(W)
+rm(w)
+w <- raster::focalWeight(Chalcedony_raster,c(9,0.04),type='Gauss')
+View(w)
+w <- raster::focalWeight(Chalcedony_raster, d=9, c(1,0.04),type='Gauss')
+w <- raster::focalWeight(Chalcedony_raster, d=9, type='circle')
+w <- raster::focalWeight(Chalcedony_raster, d=3, type='circle')
+w <- raster::focalWeight(Chalcedony_raster, d=9, type='circle')
+w <- raster::focalWeight(Chalcedony_raster, d=(9, 0.4), type='circle')
+w <- raster::focalWeight(Chalcedony_raster, d=C(9, 0.4), type='circle')
+w <- raster::focalWeight(Chalcedony_raster, d=c(9, 0.4), type='circle')
+w <- raster::focalWeight(Chalcedony_raster, d=9, type='Gauss')
+w <- raster::focalWeight(Chalcedony_raster, d=c(9, 0.4), type='Gauss')
+w <- raster::focalWeight(Chalcedony_raster, d=9, type='circle')
+rLocalKDE1 <- rasterLocalSums(Chalcedony_raster, w)
+requite("rasterKernelEstimates")
+require("rasterKernelEstimates")
+rLocalKDE1 <- rasterLocalSums(Chalcedony_raster, w)
+idx <- is.na(Chalcedony_raster)
+Chalcedony_raster[idx]<-0
+rLocalKDE1 <- rasterLocalSums(Chalcedony_raster, w)
+plot(rLocalKDE1)
+rLocalKDE1[idx] <- NA
+plot(rLocalKDE1)
+w2 <- raster::focalWeight(Chalcedony_raster, d=30, type='circle')
+View(w2)
+rLocalKDE2 <- rasterLocalSums(Chalcedony_raster, w2)
+plot(rLocalKDE2)
+rLocalKDE2[idx] <- NA
+plot(rLocalKDE2)
+summary(rLocalKDE2)
+summary(rLocalKDE1)
+max(rLocalKDE1)
+max(as.matrix(rLocalKDE1))
+max(as.data.frame(rLocalKDE1))
+maxValue(rLocalKDE1)
+rLocalKDE1<-rLocalKDE1*(maxValue(rLocalKDE1))
+plot(rLocalKDE1)
+rLocalKDE1<-rLocalKDE1*1/(maxValue(rLocalKDE1)^2)
+plot(rLocalKDE1)
+rLocalKDE1 <- rasterLocalSums(Chalcedony_raster, w)
+rLocalKDE2[idx] <- NA
+rLocalKDE1<-rLocalKDE1*1/(maxValue(rLocalKDE1))
+plot(rLocalKDE1)
+rLocalKDE1[idx] <- NA
+plot(rLocalKDE1)
+w2 <- raster::focalWeight(Chalcedony_raster, d=15, type='circle')
+rLocalKDE2 <- rasterLocalSums(Chalcedony_raster, w2)
+rLocalKDE2<-rLocalKDE2*1/(maxValue(rLocalKDE2))
+rLocalKDE2[idx] <- NA
+plot(rLocalKDE2)
+rLocalKDE2[rLocalKDE2==0] <- NA
+plot(rLocalKDE2)
+rLocalKDE1[rLocalKDE1==0] <- NA
+plot(rLocalKDE1)
+extent(Chalcedony_raster)
+south_brady <- raster(xmn=327511.1, xmx=328030.1, ymn = 4405945, ymx= 4406430, res=c(3x3), crs=crs(Chalcedony_raster))
+south_brady <- raster(xmn=327511.1, xmx=328030.1, ymn = 4405945, ymx= 4406430, res=c(3x3), crs=crs(Chalcedony_raster))
+south_brady <- raster(xmn=327511.1, xmx=328030.1, ymn = 4405945, ymx= 4406430, res=c(3x3), crs=crs(Chalcedony_raster))
+south_brady <- raster(xmn=327511.1, xmx=328030.1, ymn = 4405945, ymx= 4406430, res=c("3x3"), crs=crs(Chalcedony_raster))
+extent_brady <- raster(xmn=327365.7, xmx=329333.2, ymn = 4405311, ymx=4409193, res=c(3,3), crs="+proj=utm +zone=11 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0")
+south_brady <- raster(xmn=327511.1, xmx=328030.1, ymn = 4405945, ymx= 4406430, res=c(3,3), crs=crs(Chalcedony_raster))
+south_brady_c <- projectRaster(Chalcedony_raster, south_brady, method = "ngr")
+south_brady_c <- projectRaster(Chalcedony_raster, south_brady, method = "ngb")
+plot(south_brady_c)
+GWR_south_brady <- projectRaster(GWR_all, south_brady, method = "ngb")
+plot(GWR_south_brady)
+south_brady_def <- GWR_south_brady[["Deformation"]]
+nr<-getValues(south_brady_def)
+kmncluster <- kmeans(na.omit(nr), centers = 10, iter.max = 500, nstart = 5, algorithm="Lloyd")
+fill.na <- function(x, i=15) {
+}
+fill.na <- function(x, i=13) {
+if( is.na(x)[i] ) {
+return( round(mean(x, na.rm=TRUE),0) )
+} else {
+return( round(x[i],0) )
+}
+}
+r2 <- focal(south_brady_def, w = matrix(1,3,3), fun = fill.na,
+pad = TRUE, na.rm = FALSE )
+r2 <- focal(south_brady_def, w = matrix(1,5,5), fun = fill.na,
+pad = TRUE, na.rm = FALSE )
+plot(r2)
+plot(south_brady_def)
+31*31
+31*31/2
+fill.na <- function(x, i=481) {
+if( is.na(x)[i] ) {
+return( round(mean(x, na.rm=TRUE),0) )
+} else {
+return( round(x[i],0) )
+}
+}
+r2 <- focal(south_brady_def, w = matrix(1,31,31), fun = fill.na,
+pad = TRUE, na.rm = FALSE )
+plot(r2)
+33*33/2
+fill.na <- function(x, i=545) {
+if( is.na(x)[i] ) {
+return( round(mean(x, na.rm=TRUE),0) )
+} else {
+return( round(x[i],0) )
+}
+}
+r2 <- focal(south_brady_def, w = matrix(1,33,33), fun = fill.na,
+pad = TRUE, na.rm = FALSE )
+plot(r2)
+37*37/2
+fill.na <- function(x, i=685) {
+if( is.na(x)[i] ) {
+return( round(mean(x, na.rm=TRUE),0) )
+} else {
+return( round(x[i],0) )
+}
+}
+r2 <- focal(south_brady_def, w = matrix(1,37,37), fun = fill.na,
+pad = TRUE, na.rm = FALSE )
+plot(r2)
+round(37*37)
+round(37*37/2)
+(37*37/2)
+ceiling(37*37/2)
+fill_out <- function(r, radius=1){ diameter = round(r)*2+1 }
+fill_out <- function(r, radius=1){ diameter = round(r)*2+1 }
+fill_out <- function(r, radius=1){
+diameter = round(r)*2+1
+focus_point = celiling( (diameter^2)/2 )
+fill.na <- function(x, i=focus_point) {
+if( is.na(x)[i] ) {
+return( round(mean(x, na.rm=TRUE),0) )
+} else {
+return( round(x[i],0) )
+}
+}
+focal(r, w = matrix(1,diameter,diameter), fun = fill.na,
+pad = TRUE, na.rm = FALSE )
+}
+fill_out <- function(r, radius=1){
+diameter = round(radius)*2+1
+focus_point = celiling( (diameter^2)/2 )
+fill.na <- function(x, i=focus_point) {
+if( is.na(x)[i] ) {
+return( round(mean(x, na.rm=TRUE),0) )
+} else {
+return( round(x[i],0) )
+}
+}
+r2 <- focal(r, w = matrix(1,diameter,diameter), fun = fill.na,
+pad = TRUE, na.rm = FALSE )
+return (r2)
+}
+r2 <- fill_out(south_brady_def, 20)
+fill_out <- function(r, radius=1){
+diameter = round(radius)*2+1
+focus_point = ceiling( (diameter^2)/2 )
+fill.na <- function(x, i=focus_point) {
+if( is.na(x)[i] ) {
+return( round(mean(x, na.rm=TRUE),0) )
+} else {
+return( round(x[i],0) )
+}
+}
+r2 <- focal(r, w = matrix(1,diameter,diameter), fun = fill.na,
+pad = TRUE, na.rm = FALSE )
+return (r2)
+}
+r2 <- fill_out(south_brady_def, 20)
+plot(r2)
+w<-focalWeight(south_brady_def, d=60, type = "circle")
+ncol(w)
+fill_out <- function(r, radius=1){
+w<-focalWeight(south_brady_def, d=radius, type = "circle")
+diameter = ncol(w)
+focus_point = ceiling( (diameter^2)/2 )
+fill.na <- function(x, i=focus_point) {
+if( is.na(x)[i] ) {
+return( round(mean(x, na.rm=TRUE),0) )
+} else {
+return( round(x[i],0) )
+}
+}
+r2 <- focal(r, w = w, fun = fill.na,
+pad = TRUE, na.rm = FALSE )
+return (r2)
+}
+r2 <- fill_out(south_brady_def, 60)
+plot(r2)
+min(w)
+max(w)
+fill_out <- function(r, radius=1){
+w<-focalWeight(south_brady_def, d=radius, type = "circle")
+diameter = ncol(w)
+w<-w/max(w)
+focus_point = ceiling( (diameter^2)/2 )
+fill.na <- function(x, i=focus_point) {
+if( is.na(x)[i] ) {
+return( round(mean(x, na.rm=TRUE),0) )
+} else {
+return( round(x[i],0) )
+}
+}
+r2 <- focal(r, w = w, fun = fill.na,
+pad = TRUE, na.rm = FALSE )
+return (r2)
+}
+plot(fill_out(south_brady_def, 60))
+plot(fill_out(south_brady_def, 30))
+plot(fill_out(south_brady_def, 90))
+plot(fill_out(south_brady_def, 100))
+plot(fill_out(south_brady_def, 200))
+plot(fill_out(south_brady_def, 50))
+plot(fill_out(south_brady_def, 90))
+plot(fill_out(GWR_all[["Deformation"]], 90))
+new_def <- fill_out(GWR_all[["Deformation"]], 30)
+plot(new_def)
+new_def <- fill_out(GWR_all[["Deformation"]], 50)
+plot(new_def)
+new_def <- fill_out(GWR_all[["Deformation"]], 0)
+new_def <- fill_out(GWR_all[["Deformation"]], 60)
+plot(new_def)
+new_def <- fill_out(GWR_all[["Deformation"]], 10)
+new_def2 <- fill_out(new_def, 10)
+plot(new_def2)
+new_def3 <- fill_out(new_def, 10)
+new_def3 <- fill_out(new_def2, 10)
+plot(new_def3)
+new_def <- fill_out(GWR_all[["Deformation"]], 30)
+new_def2 <- fill_out(new_def, 30)
+plot(new_def3)
+plot(new_def2)
+idx_r <- is.na(new_def2)
+sum(idx_r)
+sum(as.matrix(idx_r))
+plot(fill_out(south_brady_def, 90), title="Radius = 90")
+plot(fill_out(south_brady_def, 90), main="Radius = 90")
+new_def_90 <- fill_out(GWR_all[["Deformation"]], 90)
+plot( new_def_90, main="Radius = 90")
+new_def_60 <- fill_out(GWR_all[["Deformation"]], 60)
+plot( new_def_60, main="Radius = 60")
+south_brady_def_60 <- projectRaster(new_def_60, south_brady, method = "ngb")
+plot(south_brady_def_60)
+south_brady_def_90 <- projectRaster(new_def_90, south_brady, method = "ngb")
+plot(south_brady_def_90, main="South Brady r=90")
+plot(fill_out(south_brady_def, 60), main="South Brady calc r=60")
+plot(fill_out(south_brady_def, 90), main="South Brady calc r=90")
+plot(fill_out(south_brady_def, 65), main="South Brady calc r=65")
+plot(fill_out(south_brady_def, 70), main="South Brady calc r=70")
+plot(fill_out(south_brady_def, 75), main="South Brady calc r=75")
+plot(fill_out(south_brady_def, 75), main="South Brady deformation r=75")
+save.image("D:/R_latest/R_20200417_env.RData")
+savehistory("D:/R_latest/R_20200417_history.txt")

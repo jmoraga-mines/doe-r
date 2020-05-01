@@ -4,8 +4,12 @@ if (!require("pacman")){
   install.packages("pacman")
   require("pacman")
 } 
-pacman::p_load(raster, tools)
+pacman::p_load(raster, tools, rasterKernelEstimates)
 
+extent_brady <- raster(xmn=327499.1, xmx=329062.1, ymn = 4405906, ymx=4409320, res=c(3,3), crs="+proj=utm +zone=11 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0")
+# Larger extent, we need to resample the Geothermal, Temperature and Fault images
+# extent_brady <- raster(xmn=327385.1, xmx=329149.1, ymn = 4405876, ymx=4409353, res=c(3,3), crs="+proj=utm +zone=11 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0")
+south_brady <- raster(xmn=327511.1, xmx=328030.1, ymn = 4405945, ymx= 4406430, res=c(3,3), crs="+proj=utm +zone=11 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0")
 
 # all_layers <- stack ("doe-images/all_layers_stack.envi")
 # names(all_layers) <- c("Chalcedony", "Kaolinite", "Gypsum", 
@@ -27,6 +31,7 @@ doe_writeRaster <- function(x, filename, format="raster", overwrite=TRUE, bandor
 }
 
 normalize_raster <- function(r, num_points=NULL, cut_off = NULL, clean_na = FALSE, na_val = 0){
+  r<-stack(r) # Make sure we are working with a stack object
   for (i in seq(nlayers(r))){
     l<-r[[i]]
     if(clean_na) {
@@ -70,15 +75,17 @@ fill_out <- function(r, radius=1){
   }
 }
 
-prep_minerals <- function() {
+prep_minerals <- function(mask=TRUE) {
   # mineral_stack<-stack("d:/CEM/HyMap_CEM")
-  buildup_mask <- stack("doe-images/buildup_mask.grd")
   mineral_stack<-stack("d:/CEM/HyMap_CEM")
   mineral_stack<-stack(projectRaster(mineral_stack, buildup_mask, method="ngb"))
   names(mineral_stack)<-c("KrattOpal", "Chalcedony", "Kaolinite",  "Hematite",   "Gypsum") 
   n<-normalize_raster(mineral_stack, num_points = 10000, cut_off = 0.02, clean_na = TRUE)
-  idx_build<-buildup_mask==0
-  n[idx_build]<-NA
+  if(mask)  { 
+    buildup_mask <- stack("doe-images/buildup_mask.grd")
+    idx_build<-buildup_mask==0
+    n[idx_build]<-NA
+  }
   return(n)
 }
 
@@ -101,9 +108,31 @@ prep_faults <- function() {
   return(f)
 }
 
+influence_area <- function(r, radius=3){
+  na_idx <- is.na(r)
+  r2 <- r
+  r2[na_idx]<-0
+  w <- focalWeight(r2, d=radius, type='circle')
+  r2 <- rasterLocalSums( r2, w )
+  r2 <- r2*(1/(maxValue(r2)))
+  r2[na_idx] <- NA
+  return(r2)
+}
+
+print_stats <- function(r)
+{
+  print(paste("Max   : ", maxValue(r)))
+  print(paste("Min   : ", minValue(r)))
+  print(paste("Mean  : ", cellStats(r, stat="mean")))
+  print(paste("StdDev: ", cellStats(r, stat="sd")))
+}
 # (Do not run)
 # mineral_stack <- stack(prep_minerals())
 # def_2019 <- stack(prep_deformation())
 # faults_2019 <- stack(prep_faults())
 # geothermal_2019 <- stack("doe-images/Geothermal_19.tif")
-# 
+# mineral_merge <- merge(mineral_stack[["Chalcedony"]], mineral_stack[["Kaolinite"]], mineral_stack[["Gypsum"]])
+# mineral_stack2 <- stack(prep_minerals(mask = FALSE))
+# chalcedony <- mineral_stack2[["Chalcedony"]]
+# chalcedony <- normalize_raster(chalcedony, num_points = 5000)
+

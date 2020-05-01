@@ -1,0 +1,288 @@
+res_Kaolinite_180 <- localmoran(GWR_train$Kaolinite, nb_180)
+res_Kaolinite_160 <- localmoran(GWR_train$Kaolinite, nb_160)
+res_Kaolinite_140 <- localmoran(GWR_train$Kaolinite, nb_140)
+res_Kaolinite_120 <- localmoran(GWR_train$Kaolinite, nb_120)
+res_Kaolinite_100 <- localmoran(GWR_train$Kaolinite, nb_100)
+res_Kaolinite_080 <- localmoran(GWR_train$Kaolinite, nb_080)
+res_Kaolinite_060 <- localmoran(GWR_train$Kaolinite, nb_060)
+res_Kaolinite_040 <- localmoran(GWR_train$Kaolinite, nb_040)
+res_Kaolinite_020 <- localmoran(GWR_train$Kaolinite, nb_020)
+res_Kaolinite_015 <- localmoran(GWR_train$Kaolinite, nb_015)
+res_Kaolinite_012 <- localmoran(GWR_train$Kaolinite, nb_012)
+
+hist(res_Kaolinite_180[,"Pr(z > 0)"])
+hist(res_Kaolinite_160[,"Pr(z > 0)"])
+hist(res_Kaolinite_120[,"Pr(z > 0)"])
+hist(res_Kaolinite_100[,"Pr(z > 0)"])
+hist(res_Kaolinite_080[,"Pr(z > 0)"])
+hist(res_Kaolinite_060[,"Pr(z > 0)"])
+hist(res_Kaolinite_040[,"Pr(z > 0)"])
+hist(res_Kaolinite_020[,"Pr(z > 0)"])
+hist(res_Kaolinite_015[,"Pr(z > 0)"])
+hist(res_Kaolinite_012[,"Pr(z > 0)"])
+
+r_Kaolinite_moran <- cbind(xy, res_Kaolinite_012[,"Ii"], res_Kaolinite_015[,"Ii"],res_Kaolinite_020[,"Ii"], 
+    res_Kaolinite_040[,"Ii"], res_Kaolinite_060[,"Ii"], res_Kaolinite_080[,"Ii"], res_Kaolinite_100[,"Ii"],
+	res_Kaolinite_120[,"Ii"],res_Kaolinite_140[,"Ii"],  res_Kaolinite_160[,"Ii"], res_Kaolinite_180[,"Ii"])
+
+r_Kaolinite_moran<- as.data.frame(r_Kaolinite_moran)
+coordinates(r_Kaolinite_moran)<- ~x+y
+proj4string(r_Kaolinite_moran)<- crs(south_brady_c)
+# proj4string(r_Kaolinite_moran)
+# [1] "+proj=utm +zone=11 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0"
+names(r_Kaolinite_moran)<-c("Ka_12m", "Ka_15m", "Ka_20m", "Ka_40m", "Ka_60m", "Ka_80m", "Ka_100m", "Ka_120m", "Ka_140m", "Ka_160m", "Ka_180m") 
+spplot(r_Kaolinite_moran)
+
+res_Geothermal_180 <- localmoran(GWR_train$Geothermal, nb_180)
+res_Geothermal_160 <- localmoran(GWR_train$Geothermal, nb_160)
+res_Geothermal_140 <- localmoran(GWR_train$Geothermal, nb_140)
+res_Geothermal_120 <- localmoran(GWR_train$Geothermal, nb_120)
+res_Geothermal_100 <- localmoran(GWR_train$Geothermal, nb_100)
+res_Geothermal_080 <- localmoran(GWR_train$Geothermal, nb_080)
+res_Geothermal_060 <- localmoran(GWR_train$Geothermal, nb_060)
+res_Geothermal_040 <- localmoran(GWR_train$Geothermal, nb_040)
+res_Geothermal_020 <- localmoran(GWR_train$Geothermal, nb_020)
+res_Geothermal_015 <- localmoran(GWR_train$Geothermal, nb_015)
+res_Geothermal_012 <- localmoran(GWR_train$Geothermal, nb_012)
+
+hist(res_Geothermal_180[,"Pr(z > 0)"])
+hist(res_Geothermal_160[,"Pr(z > 0)"])
+hist(res_Geothermal_120[,"Pr(z > 0)"])
+hist(res_Geothermal_100[,"Pr(z > 0)"])
+hist(res_Geothermal_080[,"Pr(z > 0)"])
+hist(res_Geothermal_060[,"Pr(z > 0)"])
+hist(res_Geothermal_040[,"Pr(z > 0)"])
+hist(res_Geothermal_020[,"Pr(z > 0)"])
+hist(res_Geothermal_015[,"Pr(z > 0)"])
+hist(res_Geothermal_012[,"Pr(z > 0)"])
+
+r_Geothermal_moran <- cbind(xy, res_Geothermal_012[,"Ii"], res_Geothermal_015[,"Ii"],res_Geothermal_020[,"Ii"], 
+    res_Geothermal_040[,"Ii"], res_Geothermal_060[,"Ii"], res_Geothermal_080[,"Ii"], res_Geothermal_100[,"Ii"],
+	res_Geothermal_120[,"Ii"],res_Geothermal_140[,"Ii"],  res_Geothermal_160[,"Ii"], res_Geothermal_180[,"Ii"])
+
+r_Geothermal_moran<- as.data.frame(r_Geothermal_moran)
+coordinates(r_Geothermal_moran)<- ~x+y
+proj4string(r_Geothermal_moran)<- crs(south_brady_c)
+# proj4string(r_Geothermal_moran)
+# [1] "+proj=utm +zone=11 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0"
+names(r_Geothermal_moran)<-c("Ge_12m", "Ge_15m", "Ge_20m", "Ge_40m", "Ge_60m", "Ge_80m", "Ge_100m", "Ge_120m", "Ge_140m", "Ge_160m", "Ge_180m") 
+spplot(r_Geothermal_moran)
+
+res_Faults_180 <- localmoran(GWR_train$Faults, nb_180)
+res_Faults_160 <- localmoran(GWR_train$Faults, nb_160)
+res_Faults_140 <- localmoran(GWR_train$Faults, nb_140)
+res_Faults_120 <- localmoran(GWR_train$Faults, nb_120)
+res_Faults_100 <- localmoran(GWR_train$Faults, nb_100)
+res_Faults_080 <- localmoran(GWR_train$Faults, nb_080)
+res_Faults_060 <- localmoran(GWR_train$Faults, nb_060)
+res_Faults_040 <- localmoran(GWR_train$Faults, nb_040)
+res_Faults_020 <- localmoran(GWR_train$Faults, nb_020)
+res_Faults_015 <- localmoran(GWR_train$Faults, nb_015)
+res_Faults_012 <- localmoran(GWR_train$Faults, nb_012)
+
+hist(res_Faults_180[,"Pr(z > 0)"])
+hist(res_Faults_160[,"Pr(z > 0)"])
+hist(res_Faults_120[,"Pr(z > 0)"])
+hist(res_Faults_100[,"Pr(z > 0)"])
+hist(res_Faults_080[,"Pr(z > 0)"])
+hist(res_Faults_060[,"Pr(z > 0)"])
+hist(res_Faults_040[,"Pr(z > 0)"])
+hist(res_Faults_020[,"Pr(z > 0)"])
+hist(res_Faults_015[,"Pr(z > 0)"])
+hist(res_Faults_012[,"Pr(z > 0)"])
+
+r_Faults_moran <- cbind(xy, res_Faults_012[,"Ii"], res_Faults_015[,"Ii"],res_Faults_020[,"Ii"], 
+    res_Faults_040[,"Ii"], res_Faults_060[,"Ii"], res_Faults_080[,"Ii"], res_Faults_100[,"Ii"],
+	res_Faults_120[,"Ii"],res_Faults_140[,"Ii"],  res_Faults_160[,"Ii"], res_Faults_180[,"Ii"])
+
+r_Faults_moran<- as.data.frame(r_Faults_moran)
+coordinates(r_Faults_moran)<- ~x+y
+proj4string(r_Faults_moran)<- crs(south_brady_c)
+# proj4string(r_Faults_moran)
+# [1] "+proj=utm +zone=11 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0"
+names(r_Faults_moran)<-c("Fa_12m", "Fa_15m", "Fa_20m", "Fa_40m", "Fa_60m", "Fa_80m", "Fa_100m", "Fa_120m", "Fa_140m", "Fa_160m", "Fa_180m") 
+spplot(r_Faults_moran)
+
+
+res_Deformation_180 <- localmoran(GWR_train$Deformation, nb_180)
+res_Deformation_160 <- localmoran(GWR_train$Deformation, nb_160)
+res_Deformation_140 <- localmoran(GWR_train$Deformation, nb_140)
+res_Deformation_120 <- localmoran(GWR_train$Deformation, nb_120)
+res_Deformation_100 <- localmoran(GWR_train$Deformation, nb_100)
+res_Deformation_080 <- localmoran(GWR_train$Deformation, nb_080)
+res_Deformation_060 <- localmoran(GWR_train$Deformation, nb_060)
+res_Deformation_040 <- localmoran(GWR_train$Deformation, nb_040)
+res_Deformation_020 <- localmoran(GWR_train$Deformation, nb_020)
+res_Deformation_015 <- localmoran(GWR_train$Deformation, nb_015)
+res_Deformation_012 <- localmoran(GWR_train$Deformation, nb_012)
+
+hist(res_Deformation_180[,"Pr(z > 0)"])
+hist(res_Deformation_160[,"Pr(z > 0)"])
+hist(res_Deformation_120[,"Pr(z > 0)"])
+hist(res_Deformation_100[,"Pr(z > 0)"])
+hist(res_Deformation_080[,"Pr(z > 0)"])
+hist(res_Deformation_060[,"Pr(z > 0)"])
+hist(res_Deformation_040[,"Pr(z > 0)"])
+hist(res_Deformation_020[,"Pr(z > 0)"])
+hist(res_Deformation_015[,"Pr(z > 0)"])
+hist(res_Deformation_012[,"Pr(z > 0)"])
+
+r_Deformation_moran <- cbind(xy, res_Deformation_012[,"Ii"], res_Deformation_015[,"Ii"],res_Deformation_020[,"Ii"], 
+    res_Deformation_040[,"Ii"], res_Deformation_060[,"Ii"], res_Deformation_080[,"Ii"], res_Deformation_100[,"Ii"],
+	res_Deformation_120[,"Ii"],res_Deformation_140[,"Ii"],  res_Deformation_160[,"Ii"], res_Deformation_180[,"Ii"])
+
+r_Deformation_moran<- as.data.frame(r_Deformation_moran)
+coordinates(r_Deformation_moran)<- ~x+y
+proj4string(r_Deformation_moran)<- crs(south_brady_c)
+# proj4string(r_Deformation_moran)
+# [1] "+proj=utm +zone=11 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0"
+names(r_Deformation_moran)<-c("De_12m", "De_15m", "De_20m", "De_40m", "De_60m", "De_80m", "De_100m", "De_120m", "De_140m", "De_160m", "De_180m") 
+spplot(r_Deformation_moran)
+
+res_Temperature_180 <- localmoran(GWR_train$Temperature, nb_180)
+res_Temperature_160 <- localmoran(GWR_train$Temperature, nb_160)
+res_Temperature_140 <- localmoran(GWR_train$Temperature, nb_140)
+res_Temperature_120 <- localmoran(GWR_train$Temperature, nb_120)
+res_Temperature_100 <- localmoran(GWR_train$Temperature, nb_100)
+res_Temperature_080 <- localmoran(GWR_train$Temperature, nb_080)
+res_Temperature_060 <- localmoran(GWR_train$Temperature, nb_060)
+res_Temperature_040 <- localmoran(GWR_train$Temperature, nb_040)
+res_Temperature_020 <- localmoran(GWR_train$Temperature, nb_020)
+res_Temperature_015 <- localmoran(GWR_train$Temperature, nb_015)
+res_Temperature_012 <- localmoran(GWR_train$Temperature, nb_012)
+
+hist(res_Temperature_180[,"Pr(z > 0)"])
+hist(res_Temperature_160[,"Pr(z > 0)"])
+hist(res_Temperature_120[,"Pr(z > 0)"])
+hist(res_Temperature_100[,"Pr(z > 0)"])
+hist(res_Temperature_080[,"Pr(z > 0)"])
+hist(res_Temperature_060[,"Pr(z > 0)"])
+hist(res_Temperature_040[,"Pr(z > 0)"])
+hist(res_Temperature_020[,"Pr(z > 0)"])
+hist(res_Temperature_015[,"Pr(z > 0)"])
+hist(res_Temperature_012[,"Pr(z > 0)"])
+
+r_Temperature_moran <- cbind(xy, res_Temperature_012[,"Ii"], res_Temperature_015[,"Ii"],res_Temperature_020[,"Ii"], 
+    res_Temperature_040[,"Ii"], res_Temperature_060[,"Ii"], res_Temperature_080[,"Ii"], res_Temperature_100[,"Ii"],
+	res_Temperature_120[,"Ii"],res_Temperature_140[,"Ii"],  res_Temperature_160[,"Ii"], res_Temperature_180[,"Ii"])
+
+r_Temperature_moran<- as.data.frame(r_Temperature_moran)
+coordinates(r_Temperature_moran)<- ~x+y
+proj4string(r_Temperature_moran)<- crs(south_brady_c)
+# proj4string(r_Temperature_moran)
+# [1] "+proj=utm +zone=11 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0"
+names(r_Temperature_moran)<-c("Te_12m", "Te_15m", "Te_20m", "Te_40m", "Te_60m", "Te_80m", "Te_100m", "Te_120m", "Te_140m", "Te_160m", "Te_180m") 
+spplot(r_Temperature_moran)
+
+res_Gypsum_180 <- localmoran(GWR_train$Gypsum, nb_180)
+res_Gypsum_160 <- localmoran(GWR_train$Gypsum, nb_160)
+res_Gypsum_140 <- localmoran(GWR_train$Gypsum, nb_140)
+res_Gypsum_120 <- localmoran(GWR_train$Gypsum, nb_120)
+res_Gypsum_100 <- localmoran(GWR_train$Gypsum, nb_100)
+res_Gypsum_080 <- localmoran(GWR_train$Gypsum, nb_080)
+res_Gypsum_060 <- localmoran(GWR_train$Gypsum, nb_060)
+res_Gypsum_040 <- localmoran(GWR_train$Gypsum, nb_040)
+res_Gypsum_020 <- localmoran(GWR_train$Gypsum, nb_020)
+res_Gypsum_015 <- localmoran(GWR_train$Gypsum, nb_015)
+res_Gypsum_012 <- localmoran(GWR_train$Gypsum, nb_012)
+
+hist(res_Gypsum_180[,"Pr(z > 0)"])
+hist(res_Gypsum_160[,"Pr(z > 0)"])
+hist(res_Gypsum_120[,"Pr(z > 0)"])
+hist(res_Gypsum_100[,"Pr(z > 0)"])
+hist(res_Gypsum_080[,"Pr(z > 0)"])
+hist(res_Gypsum_060[,"Pr(z > 0)"])
+hist(res_Gypsum_040[,"Pr(z > 0)"])
+hist(res_Gypsum_020[,"Pr(z > 0)"])
+hist(res_Gypsum_015[,"Pr(z > 0)"])
+hist(res_Gypsum_012[,"Pr(z > 0)"])
+
+r_Gypsum_moran <- cbind(xy, res_Gypsum_012[,"Ii"], res_Gypsum_015[,"Ii"],res_Gypsum_020[,"Ii"], 
+    res_Gypsum_040[,"Ii"], res_Gypsum_060[,"Ii"], res_Gypsum_080[,"Ii"], res_Gypsum_100[,"Ii"],
+	res_Gypsum_120[,"Ii"],res_Gypsum_140[,"Ii"],  res_Gypsum_160[,"Ii"], res_Gypsum_180[,"Ii"])
+
+r_Gypsum_moran<- as.data.frame(r_Gypsum_moran)
+coordinates(r_Gypsum_moran)<- ~x+y
+proj4string(r_Gypsum_moran)<- crs(south_brady_c)
+# proj4string(r_Gypsum_moran)
+# [1] "+proj=utm +zone=11 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0"
+names(r_Gypsum_moran)<-c("Gy_12m", "Gy_15m", "Gy_20m", "Gy_40m", "Gy_60m", "Gy_80m", "Gy_100m", "Gy_120m", "Gy_140m", "Gy_160m", "Gy_180m") 
+spplot(r_Gypsum_moran)
+
+####################################
+require("DHARMa")
+m_lm <- lm(Geothermal~Kaolinite+Chalcedony+Gypsum+Temperature+Faults, data=GWR_train)
+summary(m_lm)
+# Call:
+# lm(formula = Geothermal ~ Kaolinite + Chalcedony + Gypsum + Temperature + 
+#     Faults, data = GWR_train)
+# 
+# Residuals:
+#     Min      1Q  Median      3Q     Max 
+# -0.9695 -0.4204  0.1158  0.3604  0.5446 
+# 
+# Coefficients:
+#               Estimate Std. Error t value Pr(>|t|)    
+# (Intercept)  1.333e+00  5.360e-02  24.867  < 2e-16 ***
+# Kaolinite    1.904e+00  2.868e-01   6.637 3.50e-11 ***
+# Chalcedony   7.425e-01  2.734e-02  27.157  < 2e-16 ***
+# Gypsum       2.432e+01  4.836e+00   5.029 5.08e-07 ***
+# Temperature  2.533e-02  1.436e-03  17.640  < 2e-16 ***
+# Faults      -1.058e+02  7.393e+00 -14.315  < 2e-16 ***
+# ---
+# Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+# 
+# Residual standard error: 0.407 on 5528 degrees of freedom
+# Multiple R-squared:  0.1904,	Adjusted R-squared:  0.1897 
+# F-statistic: 260.1 on 5 and 5528 DF,  p-value: < 2.2e-16
+
+sims <- simulateResiduals(m_lm)
+# testSpatialAutocorrelation(sims, GWR_train$x, GWR_train$y)
+# 
+# 	DHARMa Moran's I test for spatial autocorrelation
+# 
+# data:  
+# observed = 0.21917252, expected = -0.00018073, sd = 0.00038422, p-value < 2.2e-16
+# alternative hypothesis: Spatial autocorrelation
+
+
+
+
+################
+
+sp_result_m1 <- spautolm(formula = Geothermal~Kaolinite+Chalcedony+Gypsum+Temperature+Faults, data=GWR_train_sp, listw=listw_GWR, family = "SAR", method="eigen", control=list())
+res_m1<-summary(sp_result_m1)
+
+
+sp_result_m4 <- spautolm(formula = Geothermal~Kaolinite+Chalcedony+Gypsum+Temperature+Faults+Deformation, data=GWR_train_sp, listw=listw_GWR, family = "SAR", method="eigen", control=list())
+
+res_m4<-summary(sp_result_m4)
+res_m1
+res_m2
+
+m4_lag = lagsarlm(formula = Geothermal~Kaolinite+Chalcedony+Gypsum+Temperature+Faults+Deformation, data=GWR_train_sp, listw=listw_GWR,  tol.solve=1.0e-6)
+m4_lag_20 = lagsarlm(formula = Geothermal~Kaolinite+Chalcedony+Gypsum+Temperature+Faults+Deformation, data=GWR_train_sp, listw=nb_020,  tol.solve=1.0e-6)
+
+require(latticeExtra)
+# install.packages("latticeExtra")
+m4_lag_res <- residuals(m4_lag)
+GWR_train_sp$Residuals <- m4_lag_res
+grps<-20
+brks <- quantile(GWR_train_sp$Residuals, 0:(grps-1)/(grps-1), na.rm=TRUE)
+p <- spplot(GWR_train_sp, "residuals", at=brks, col.regions=rev(brewer.pal(grps, "RdBu")), col="transparent")
+zprint( p + layer(sp.polygons(hh)) )
+
+
+
+###################################
+
+nb.id <- data.frame("distance"=c(12,15,20,40,60,80,100))
+rm(nb.nb)
+nb.nb <- vector("list", nrow(nb.id))
+for (i in seq(1,nrow(nb.id))) {
+  nb.nb[[i]]<-nb2listw(dnearneigh(xy,0,nb.id$distance[i]))
+}
+for (lw in nb.nb) {
+  temp_mt <- moran.test(GWR_train$Chalcedony, lw)
+  print(temp_mt)
+}

@@ -1,0 +1,25 @@
+[general]
+creator=R package 'raster'
+created=2020-05-01 11:26:35
+[georeference]
+nrows=162
+ncols=173
+xmin=327511.1
+ymin=4405944
+xmax=328030.1
+ymax=4406430
+projection=+proj=utm +zone=11 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0
+[data]
+datatype=FLT4S
+byteorder=little
+nbands=8
+bandorder=BSQ
+minvalue=0:0:0:0:0:8:0.408444315195084:-47.0523643493652
+maxvalue=1:1:0.988810479640961:0.610235214233398:0.376969158649445:12:0.755710244178772:6.61214303970337
+nodatavalue=-3.4e+38
+[legend]
+legendtype=
+values=
+color=
+[description]
+layername=Geothermal:Minerals:Chalcedony:Kaolinite:Gypsum:Temperature:Faults:Deformation
