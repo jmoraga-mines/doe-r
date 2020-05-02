@@ -275,6 +275,12 @@ zprint( p + layer(sp.polygons(hh)) )
 
 
 ###################################
+gwr_sb_stack <- stack("doe-imagestacks/gwr_sb_stack.gri")
+gwr_sb_pts <- rasterToPoints(gwr_sb_stack)
+xy <- gwr_sb_pts[,1:2]
+nb.xy <- gwr_sb_pts[,1:2]
+xy <- as.data.frame(xy)
+coordinates(xy) ~ x+y
 
 nb.id <- data.frame("distance"=c(12,15,20,40,60,80,100))
 rm(nb.nb)

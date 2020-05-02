@@ -4,7 +4,7 @@ if (!require("pacman")){
   install.packages("pacman")
   require("pacman")
 } 
-pacman::p_load(raster, tools, rasterKernelEstimates)
+pacman::p_load(raster, tools, rasterKernelEstimates, spdep)
 
 extent_brady <- raster(xmn=327499.1, xmx=329062.1, ymn = 4405906, ymx=4409320, res=c(3,3), crs="+proj=utm +zone=11 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0")
 # Larger extent, we need to resample the Geothermal, Temperature and Fault images
