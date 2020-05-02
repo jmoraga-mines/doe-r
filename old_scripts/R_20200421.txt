@@ -282,7 +282,8 @@ nb.xy <- gwr_sb_pts[,1:2]
 xy <- as.data.frame(xy)
 coordinates(xy) ~ x+y
 
-nb.id <- data.frame("distance"=c(12,15,20,40,60,80,100))
+# nb.id <- data.frame("distance"=c(12,15,20,40,60,80,100))
+nb.id <- data.frame("distance"=c(12,15,21,27,33,39,42))
 rm(nb.nb)
 nb.nb <- vector("list", nrow(nb.id))
 for (i in seq(1,nrow(nb.id))) {
