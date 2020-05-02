@@ -47,3 +47,6 @@ print(cm)
 # partialPlot(rf, data, Temperature )
 # partialPlot(rf, data, Faults )
 
+### https://stats.stackexchange.com/questions/41443/how-to-actually-plot-a-sample-tree-from-randomforestgettree
+
+
