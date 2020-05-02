@@ -19,6 +19,9 @@ pacman::p_load(tree)
 pacman::p_load(randomForest, caTools)
 gwr_sb_df <- read.csv("doe-imagestacks/gwr_sb.csv")
 gwr_sb_df <- as.data.frame(gwr_sb_df)
+temp_2019_na <- is.na(temp_2019)
+temp_2019[temp_2019_na] <- 0
+gwr_sb_df["Temperature"] <- temp_2019
 gwr_sb_stack <- stack("doe-imagestacks/gwr_sb_stack.gri")
 # def2 <- gwr_sb_stack[["Deformation"]]
 # def2[def2>-20]<-0
