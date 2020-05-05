@@ -1,0 +1,25 @@
+[general]
+creator=R package 'raster'
+created=2020-05-03 13:28:20
+[georeference]
+nrows=1138
+ncols=521
+xmin=327499.1
+ymin=4405906
+xmax=329062.1
+ymax=4409320
+projection=+proj=utm +zone=11 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0
+[data]
+datatype=FLT4S
+byteorder=little
+nbands=3
+bandorder=BSQ
+minvalue=1:1:1
+maxvalue=16:16:16
+nodatavalue=-3.4e+38
+[legend]
+legendtype=
+values=
+color=
+[description]
+layername=s4_100:s4_1k:s4_2k

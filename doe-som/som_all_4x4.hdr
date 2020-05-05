@@ -1,0 +1,15 @@
+ENVI
+samples =  521 
+lines =  1138 
+bands =  3 
+header offset = 0
+file type = ENVI Standard
+data type =  4 
+data ignore value=-3.4e+38
+interleave =  BSQ 
+sensor type = 
+byte order =  0 
+map info = {projection, 1, 1, 327499.1 ,  4409320 ,  3 ,  3 }
+coordinate system string = {PROJCS["WGS_1984_UTM_Zone_11N",GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137,298.257223563]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]],PROJECTION["Transverse_Mercator"],PARAMETER["latitude_of_origin",0],PARAMETER["central_meridian",-117],PARAMETER["scale_factor",0.9996],PARAMETER["false_easting",500000],PARAMETER["false_northing",0],UNIT["Meter",1]]}
+z plot range = { 1 1 1 ,  16 16 16 }
+band names = { s4_100,s4_1k,s4_2k } 
