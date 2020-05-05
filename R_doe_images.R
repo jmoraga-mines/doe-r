@@ -61,7 +61,7 @@ apply_threshold <- function(my_layer, a_threshold) {
   return(sum(as.matrix(my_layer)>a_threshold)) 
 }
 
-fill_out <- function(r, radius=1){
+fill_out <- function(r, radius=1, south_brady_def){ 
   w<-focalWeight(south_brady_def, d=radius, type = "circle")
   diameter = ncol(w)
   w<-w/max(w)
@@ -72,8 +72,12 @@ fill_out <- function(r, radius=1){
     } else {
       return( round(x[i],0) )
     }
-  }
+  } 
+  r2 <- focal(r, w = w, fun = fill.na, 
+              pad = TRUE, na.rm = FALSE )
+  return (r2)
 }
+
 
 prep_minerals <- function(mask=TRUE) {
   # mineral_stack<-stack("d:/CEM/HyMap_CEM")
