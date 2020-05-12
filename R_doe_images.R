@@ -135,4 +135,6 @@ print_stats <- function(r)
 # mineral_stack2 <- stack(prep_minerals(mask = FALSE))
 # chalcedony <- mineral_stack2[["Chalcedony"]]
 # chalcedony <- normalize_raster(chalcedony, num_points = 5000)
-
+# temp_2019<-stack("doe-images/LST_Merge.tif")
+# temp_2019[is.na(temp_2019)]<-0
+# t<-influence_area(temp_2019, 300)

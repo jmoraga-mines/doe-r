@@ -9,7 +9,7 @@
     </Metadata>
   </PAMRasterBand>
   <PAMRasterBand band="2">
-    <Description>som4 r=2k</Description>
+    <Description>som4 r=1000</Description>
     <Metadata>
       <MDI key="STATISTICS_MAXIMUM">16</MDI>
       <MDI key="STATISTICS_MEAN">10.464167236142</MDI>
