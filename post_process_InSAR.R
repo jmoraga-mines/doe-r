@@ -8,7 +8,7 @@ pacman::p_load(raster, rasterKernelEstimates, spdep)
 
 
 # Inputs are
-# r: a stack
+# r: a stack  -- Mahmut: I converting to Raster in order to feed the function ???
 # radius: radius (in meters)
 # base_raster: a raster to use a base to calculate radius in pixels
 # r and base_raster should have the same resolution
@@ -75,13 +75,13 @@ kmeans_tmp <- function(r_pts, img_name, n_clusters=5, plot_image = FALSE) {
     proj4string(k_tmp_dst_pt) <- crs(" +proj=utm +zone=11 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 ")
     gridded(k_tmp_dst_pt) <- TRUE
     plot(k_tmp_dst_pt, col=rev(rainbow(n_clusters)))
-    k_tmp_dst_pt<-stack(k_tmp_dst_pt)
-    k_tmp_dst_pt$centers <- k_tmp_dst$centers
-    k_tmp_dst_pt$size <- k_tmp_dst$size
-    k_tmp_dst_pt$withinss <- k_tmp_dst$withinss
-    k_tmp_dst_pt$center <- k_tmp_dst$center
-    k_tmp_dst_pt$scale <- k_tmp_dst$scale
-    k_tmp_dst_pt$centroids <- k_tmp_dst$centroids
+    # k_tmp_dst_pt<-stack(k_tmp_dst_pt)
+    # k_tmp_dst_pt[[1]]$centers <- k_tmp_dst$centers
+    # k_tmp_dst_pt[[1]]$size <- k_tmp_dst$size
+    # k_tmp_dst_pt[[1]]$withinss <- k_tmp_dst$withinss
+    # k_tmp_dst_pt[[1]]$center <- k_tmp_dst$center
+    # k_tmp_dst_pt[[1]]$scale <- k_tmp_dst$scale
+    # k_tmp_dst_pt[[1]]$centroids <- k_tmp_dst$centroids
     return(k_tmp_dst_pt)
   }
   #summary(pt_tmp_dst)
