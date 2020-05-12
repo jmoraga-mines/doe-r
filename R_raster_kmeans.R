@@ -5,7 +5,7 @@ kmeans_tmp <- function(pt_lst_16, img_name, n_clusters=5, plot_image = FALSE) {
   pt_tmp_dst<-(pt_tmp_dst-mean(pt_tmp_dst))/(sd(pt_tmp_dst))
   k_tmp_dst <- kmeans(pt_tmp_dst,n_clusters, iter.max = 2000)
   cluster_lst <- as.data.frame(k_tmp_dst$centers)
-  cluster_lst$cluser <- seq(1,length(k_tmp_dst$centers))
+  cluster_lst$cluster <- seq(1,length(k_tmp_dst$centers))
   colnames(cluster_lst)<-c("temp", "cluster")
   sorted_clusters <- cluster_lst[order(cluster_lst[,1]),]
   k_tmp_dst$cluster <- match(unlist(k_tmp_dst$cluster), sorted_clusters[,2])
