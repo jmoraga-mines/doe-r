@@ -48,3 +48,4 @@ kmeans_dst <- function(pt_lst_16, img_name, n_clusters=5, plot_image = FALSE) {
   # summary(pt_tmp_dst)
   return (k_tmp_dst)
 }
+
