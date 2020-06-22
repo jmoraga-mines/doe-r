@@ -116,7 +116,7 @@ simple_som <- function(measures, data, grid=somgrid(3,3,"rectangular"), rlen=100
 ###   plot(SOM.SOM3, type = "dist.neighbours", palette.name = terrain.colors, main="Neighbor distance SOM v3")
 ### }
 
-  
+
 # s3_100 <- simple_som(SOM.measures3, gwr_df, grid=somgrid(3,3,"rectangular"), 
 #                      rlen=100, main_title = "SOM (3,3) rlen=100")
 # s3_1000 <- simple_som(SOM.measures3, gwr_df, grid=somgrid(3,3,"rectangular"), 
