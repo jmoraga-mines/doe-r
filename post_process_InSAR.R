@@ -74,7 +74,7 @@ kmeans_tmp <- function(r_pts, img_name, n_clusters=5, plot_image = FALSE) {
     coordinates(k_tmp_dst_pt) <- ~ x+ y
     proj4string(k_tmp_dst_pt) <- crs(" +proj=utm +zone=11 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 ")
     gridded(k_tmp_dst_pt) <- TRUE
-    plot(k_tmp_dst_pt, col=rev(rainbow(n_clusters)))
+    plot(k_tmp_dst_pt, col=rev(rainbow(n_clusters)), main=img_name)
     # k_tmp_dst_pt<-stack(k_tmp_dst_pt)
     # k_tmp_dst_pt[[1]]$centers <- k_tmp_dst$centers
     # k_tmp_dst_pt[[1]]$size <- k_tmp_dst$size
