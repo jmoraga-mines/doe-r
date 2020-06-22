@@ -1,0 +1,512 @@
+i8fs <- fill_out(i8fs, radius = radius, i8)
+print("... anomaly")
+i8fa <- fill_out(i8fa, radius = radius, i8)
+print("Calculating influence area")
+ii8fa <- influence_area(i8fa, radius = influence_radius)
+print("... uplift")
+ii8fs <- influence_area(i8fs, radius = influence_radius)
+print("... subsidence")
+ii8fu <- influence_area(i8fu, radius = influence_radius)
+print("... anomaly")
+print("Stacking data and finishing")
+s1 <- stack(i8fu, i8fs, i8fa)
+names(s1) <- c("u", "s", "a")
+s1 <- normalize_raster(s1)
+s2 <- stack(ii8fu, ii8fs, ii8fa)
+names(s2) <- c("uplift", "subsidence", "anomaly")
+# spplot(s2, main=paste("Fill out + influence (c>=", coherence,")"))
+return(s2)
+}
+s3 <- process_def_csv("d:/Deformation/PSI_17_18_19_M_1_65_59img_deltas.csv", raster(extent(d0)))
+r0 <- raster(extent(d0))
+extent(r0)
+s3 <- process_def_csv("d:/Deformation/PSI_17_18_19_M_1_65_59img_deltas.csv", r0)
+extent(south_brady)
+extent(extent_brady)
+extent(r0)
+my_data0 <- def_new("d:/Deformation/PSI_17_18_19_M_1_65_59img_deltas.csv", coherence = 0.8)
+d0 <- SpatialPoints(my_data0[c("x", "y")], proj4string = CRS("+init=epsg:32611"))
+r0 <- raster(extent(d0))
+extent(r0)
+s3 <- process_def_csv("d:/Deformation/PSI_17_18_19_M_1_65_59img_deltas.csv", r0)
+process_def_csv <- function(filename,
+new_extent = NA,
+coherence = 0.8,
+radius = 120,
+influence_radius = 30) {
+d8 <- def_new(filename,
+coherence = coherence)
+if (is.na(new_extent)){
+d0 <- SpatialPoints(d8[c("x", "y")], proj4string = CRS("+init=epsg:32611"))
+new_extent <- raster(extent(d0))
+}
+d8s <- anomaly_sp(d8, new_extent)
+i8 <- anomaly_raster(d8s,
+new_extent,
+c("uplift", "subsidence", "anomaly"))
+print("Filling out missing data... pass 1")
+print("... uplift")
+i8fu <- fill_out(i8[["uplift"]], radius = radius, i8)
+print("... subsidence")
+i8fs <- fill_out(i8[["subsidence"]], radius = radius, i8)
+print("... anomaly")
+i8fa <- fill_out(i8[["anomaly"]], radius = radius, i8)
+print("Filling out missing data... pass 2")
+print("... uplift")
+i8fu <- fill_out(i8fu, radius = radius, i8)
+print("... subsidence")
+i8fs <- fill_out(i8fs, radius = radius, i8)
+print("... anomaly")
+i8fa <- fill_out(i8fa, radius = radius, i8)
+print("Calculating influence area")
+ii8fa <- influence_area(i8fa, radius = influence_radius)
+print("... uplift")
+ii8fs <- influence_area(i8fs, radius = influence_radius)
+print("... subsidence")
+ii8fu <- influence_area(i8fu, radius = influence_radius)
+print("... anomaly")
+print("Stacking data and finishing")
+s1 <- stack(i8fu, i8fs, i8fa)
+names(s1) <- c("u", "s", "a")
+s1 <- normalize_raster(s1)
+s2 <- stack(ii8fu, ii8fs, ii8fa)
+names(s2) <- c("uplift", "subsidence", "anomaly")
+# spplot(s2, main=paste("Fill out + influence (c>=", coherence,")"))
+return(s2)
+}
+s3 <- process_def_csv("d:/Deformation/PSI_17_18_19_M_1_65_59img_deltas.csv")
+file_name <- "d:/Deformation/PSI_17_18_19_M_1_65_59img_deltas.csv"
+new_extent = NA
+coherence = 0.8
+fill_radius = 120
+influence_radius = 30
+d8 <- def_new(file_name, coherence = coherence)
+if (is.na(new_extent)){
+d0 <- SpatialPoints(d8[c("x", "y")], proj4string = CRS("+init=epsg:32611"))
+new_extent <- raster(extent(d0))
+}
+d8s <- anomaly_sp(d8, new_extent)
+i8 <- anomaly_raster(d8s,
+new_extent,
+c("uplift", "subsidence", "anomaly"))
+i8
+new_extent <- NA
+new_extent <- raster(extent(d0), crs =  CRS("+init=epsg:32611"))
+new_extent
+process_def_csv <- function(filename,
+new_extent = NA,
+coherence = 0.8,
+radius = 120,
+influence_radius = 30) {
+d8 <- def_new(filename,
+coherence = coherence)
+if (is.na(new_extent)){
+d0 <- SpatialPoints(d8[c("x", "y")], proj4string = CRS("+init=epsg:32611"))
+new_extent <- raster(extent(d0), crs =  CRS("+init=epsg:32611"))
+}
+d8s <- anomaly_sp(d8, new_extent)
+i8 <- anomaly_raster(d8s,
+new_extent,
+c("uplift", "subsidence", "anomaly"))
+print("Filling out missing data... pass 1")
+print("... uplift")
+i8fu <- fill_out(i8[["uplift"]], radius = radius, i8)
+print("... subsidence")
+i8fs <- fill_out(i8[["subsidence"]], radius = radius, i8)
+print("... anomaly")
+i8fa <- fill_out(i8[["anomaly"]], radius = radius, i8)
+print("Filling out missing data... pass 2")
+print("... uplift")
+i8fu <- fill_out(i8fu, radius = radius, i8)
+print("... subsidence")
+i8fs <- fill_out(i8fs, radius = radius, i8)
+print("... anomaly")
+i8fa <- fill_out(i8fa, radius = radius, i8)
+print("Calculating influence area")
+ii8fa <- influence_area(i8fa, radius = influence_radius)
+print("... uplift")
+ii8fs <- influence_area(i8fs, radius = influence_radius)
+print("... subsidence")
+ii8fu <- influence_area(i8fu, radius = influence_radius)
+print("... anomaly")
+print("Stacking data and finishing")
+s1 <- stack(i8fu, i8fs, i8fa)
+names(s1) <- c("u", "s", "a")
+s1 <- normalize_raster(s1)
+s2 <- stack(ii8fu, ii8fs, ii8fa)
+names(s2) <- c("uplift", "subsidence", "anomaly")
+# spplot(s2, main=paste("Fill out + influence (c>=", coherence,")"))
+return(s2)
+}
+d8s <- anomaly_sp(d8, new_extent)
+i8 <- anomaly_raster(d8s,
+new_extent,
+c("uplift", "subsidence", "anomaly"))
+i8
+print("Filling out missing data... pass 1")
+print("... uplift")
+i8fu <- fill_out(i8[["uplift"]], radius = radius, i8)
+print("Filling out missing data... pass 1")
+print("... uplift")
+i8fu <- fill_out(i8[["uplift"]], radius = fill_radius, i8)
+i8
+d8s
+anomaly_raster <- function(df, r, items=c("uplift", "subsidence")){
+df <- as.data.frame(df)
+l <- length(items)
+v <- vector(mode="list", length = l)
+print("Creating Rasters:")
+for (i in seq(l)) {
+print(items[i])
+v[[i]] <- rasterize( df[, c("x","y")], r, df[, items[i]], fun=mean )
+}
+print("Creating Stack")
+s<-stack(v)
+names(s) <- items
+return(s)
+}
+d8s <- anomaly_sp(d8, new_extent)
+i8 <- anomaly_raster(d8s,
+new_extent,
+c("uplift", "subsidence", "anomaly"))
+i8
+anomaly_raster <- function(df, r, items=c("uplift", "subsidence")){
+df <- as.data.frame(df)
+l <- length(items)
+v <- vector(mode="list", length = l)
+print("Creating Rasters:")
+for (i in seq(l)) {
+print(items[i])
+# v[[i]] <- rasterize( df[, c("x","y")], r, df[, items[i]], fun=mean )
+v[[i]] <- rasterize( df[, c("x","y")], r, df[, items[i]])
+}
+print("Creating Stack")
+s<-stack(v)
+names(s) <- items
+return(s)
+}
+d8s <- anomaly_sp(d8, new_extent)
+i8 <- anomaly_raster(d8s,
+new_extent,
+c("uplift", "subsidence", "anomaly"))
+i8
+process_def_csv <- function(filename,
+new_extent = NA,
+coherence = 0.8,
+radius = 120,
+influence_radius = 30) {
+d8 <- def_new(filename,
+coherence = coherence)
+if (is.na(new_extent)){
+d0 <- SpatialPoints(d8[c("x", "y")], proj4string = CRS("+init=epsg:32611"))
+new_extent <- raster(extent(d0), crs =  CRS("+init=epsg:32611", res=c(3,3)))
+}
+d8s <- anomaly_sp(d8, new_extent)
+i8 <- anomaly_raster(d8s,
+new_extent,
+c("uplift", "subsidence", "anomaly"))
+print("Filling out missing data... pass 1")
+print("... uplift")
+i8fu <- fill_out(i8[["uplift"]], radius = radius, i8)
+print("... subsidence")
+i8fs <- fill_out(i8[["subsidence"]], radius = radius, i8)
+print("... anomaly")
+i8fa <- fill_out(i8[["anomaly"]], radius = radius, i8)
+print("Filling out missing data... pass 2")
+print("... uplift")
+i8fu <- fill_out(i8fu, radius = radius, i8)
+print("... subsidence")
+i8fs <- fill_out(i8fs, radius = radius, i8)
+print("... anomaly")
+i8fa <- fill_out(i8fa, radius = radius, i8)
+print("Calculating influence area")
+ii8fa <- influence_area(i8fa, radius = influence_radius)
+print("... uplift")
+ii8fs <- influence_area(i8fs, radius = influence_radius)
+print("... subsidence")
+ii8fu <- influence_area(i8fu, radius = influence_radius)
+print("... anomaly")
+print("Stacking data and finishing")
+s1 <- stack(i8fu, i8fs, i8fa)
+names(s1) <- c("u", "s", "a")
+s1 <- normalize_raster(s1)
+s2 <- stack(ii8fu, ii8fs, ii8fa)
+names(s2) <- c("uplift", "subsidence", "anomaly")
+# spplot(s2, main=paste("Fill out + influence (c>=", coherence,")"))
+return(s2)
+}
+new_extent <- raster(extent(d0), crs =  CRS("+init=epsg:32611", res=c(3,3)))
+new_extent <- raster(extent(d0), crs =  CRS("+init=epsg:32611", res=c(3,3))
+)
+new_extent <- raster(extent(d0), crs =  CRS("+init=epsg:32611"), res=c(3,3))
+process_def_csv <- function(filename,
+new_extent = NA,
+coherence = 0.8,
+radius = 120,
+influence_radius = 30) {
+d8 <- def_new(filename,
+coherence = coherence)
+if (is.na(new_extent)){
+d0 <- SpatialPoints(d8[c("x", "y")], proj4string = CRS("+init=epsg:32611"))
+new_extent <- raster(extent(d0), crs =  CRS("+init=epsg:32611"), res=c(3,3))
+}
+d8s <- anomaly_sp(d8, new_extent)
+i8 <- anomaly_raster(d8s,
+new_extent,
+c("uplift", "subsidence", "anomaly"))
+print("Filling out missing data... pass 1")
+print("... uplift")
+i8fu <- fill_out(i8[["uplift"]], radius = radius, i8)
+print("... subsidence")
+i8fs <- fill_out(i8[["subsidence"]], radius = radius, i8)
+print("... anomaly")
+i8fa <- fill_out(i8[["anomaly"]], radius = radius, i8)
+print("Filling out missing data... pass 2")
+print("... uplift")
+i8fu <- fill_out(i8fu, radius = radius, i8)
+print("... subsidence")
+i8fs <- fill_out(i8fs, radius = radius, i8)
+print("... anomaly")
+i8fa <- fill_out(i8fa, radius = radius, i8)
+print("Calculating influence area")
+ii8fa <- influence_area(i8fa, radius = influence_radius)
+print("... uplift")
+ii8fs <- influence_area(i8fs, radius = influence_radius)
+print("... subsidence")
+ii8fu <- influence_area(i8fu, radius = influence_radius)
+print("... anomaly")
+print("Stacking data and finishing")
+s1 <- stack(i8fu, i8fs, i8fa)
+names(s1) <- c("u", "s", "a")
+s1 <- normalize_raster(s1)
+s2 <- stack(ii8fu, ii8fs, ii8fa)
+names(s2) <- c("uplift", "subsidence", "anomaly")
+# spplot(s2, main=paste("Fill out + influence (c>=", coherence,")"))
+return(s2)
+}
+d8s <- anomaly_sp(d8, new_extent)
+i8 <- anomaly_raster(d8s,
+new_extent,
+c("uplift", "subsidence", "anomaly"))
+spplot(i8)
+s3 <- process_def_csv("d:/Deformation/PSI_17_18_19_M_1_65_59img_deltas.csv")
+doe_writeRaster(s3, "def_stack_08")
+spplot(s3)
+brady_08 <- projectRaster(s3, extent_brady, method="ngb")
+spplot(brady_08)
+spplot(s2)
+s1 <- process_def_csv("d:/Deformation/PSI_17_18_19_M_1_65_59img_deltas.csv", south_brady)
+s1 <- process_def_csv("d:/Deformation/PSI_17_18_19_M_1_65_59img_deltas.csv", new_extent = south_brady)
+is.na(south_brady)
+typeof(NA)
+typeof(south_brady)
+spplot(s3)
+spplot(brady_08)
+spplot(s2)
+brady_08b <- normalize_raster(brady_08)
+spplot(brady_08b)
+spplot(s2, main="Brady (analysis with cropped data)")
+brady_08 <- projectRaster(s3, extent_brady, method = "ngb")
+brady_08b <- normalize_raster(brady_08)
+spplot(brady_08b, main="Brady (all data, cropped and normalized)")
+my_data0 <- def_new("d:/Deformation/PSI_17_18_19_M_1_65_59img_deltas.csv", coherence = 0.8)
+d0 <- SpatialPoints(my_data0[c("x", "y")], proj4string = CRS("+init=epsg:32611"))
+d0$subsidence <- my_data0$subsidence
+d0$uplift <- my_data0$uplift
+spplot(d0)
+5.97135348958436+0.456614607085934
+-5.97135348958436+0.456614607085934
+require(rgdal)
+writeOGR(d0, "../subsidence", "subsidence", driver="ESRI Shapefile")
+writeOGR(d0, "../uplift", "uplift", driver="ESRI Shapefile")
+library(dismo)
+install.packages("dismo")
+library(dismo)
+v <- voronoi(d0)
+plot(v)
+ds <- SpatialPoints(my_data0[c("x", "y")], proj4string = CRS("+init=epsg:32611"))
+ds$subsidence <- my_data0$subsidence
+ca <- aggregate(ds)
+vca <- intersect(v, ca)
+vca <- intersect(v, ds)
+spplot(vca, 'prec', col.regions=rev(get_col_regions()))
+require(gstat)
+gs <- gstat(formula=subsidence~1, locations=d0, nmax=12, set=list(idp = 0))
+r <- raster(extent(d0), res=c(3,3), crs=crs(d0))
+nn <- interpolate(r, gs)
+plot(nn)
+brady_08nn <- projectRaster(nn, extent_brady, method="ngb")
+spplot(brady_08nn, main="Nearest neighbor")
+som_stack <- stack("doe-imagestacks/som_stack")
+spplot(som_stack)
+source('D:/git/doe-r/R_doe_SOM.R', encoding = 'UTF-8')
+som_measures <- names(som_stack)
+som_df <- as.data.frame(som_stack)
+View(som_df)
+s3_100 <- simple_som(som_measures, som_df, grid=somgrid(3,3,"rectangular"),
+rlen=100, main_title = "SOM (3,3) rlen=100")
+s3_1000 <- simple_som(som_measures, som_df, grid=somgrid(3,3,"rectangular"), rlen=1000, main_title = "SOM (3,3) rlen=1000")
+r<- coordinates(som_stack)
+View(r)
+r<- as.data.frame(r)
+r3<-r
+r3$s1 <- s3_100$unit.classif
+som_df <- rasterToPoints(som_stack)
+som_df <- as.data.frame(som_df)
+som_pts <- rasterToPoints(som_stack)
+rm(som_pts)
+s3_100 <- simple_som(som_measures, som_df, grid=somgrid(3,3,"rectangular"),
+rlen=100, main_title = "SOM (3,3) rlen=100")
+s3_500 <- simple_som(som_measures, som_df, grid=somgrid(3,3,"rectangular"), rlen=500, main_title = "SOM (3,3) rlen=500")
+extent_brady <- raster(xmn=327499.1, xmx=329062.1, ymn = 4405906, ymx=4409320, res=c(3,3), CRS("+init=epsg:32611"))
+extent_brady <- raster(xmn=327499.1, xmx=329062.1, ymn = 4405906, ymx=4409320, res=c(3,3), crs=CRS("+init=epsg:32611"))
+require(rgdal)
+shp <- readOGR("D:/git/Brady_DP_structures.shp")
+extent(shp)
+shp_r<- raster(extent(shp), res=c(3,3), crs=CRS("+init=epsg:32611"))
+spplot(shp_r)
+shp_r<- rasterize(shp, res=c(3,3), crs=CRS("+init=epsg:32611"), method="ngb")
+shp_r[[1]]<-1
+shp_r
+require(rgdal)
+shp <- readOGR("D:/git/Brady_DP_structures.shp")
+extent(shp)
+shp
+shp_r<- raster(extent(shp), res=c(3,3), crs=CRS("+init=epsg:32611"))
+shp_r
+summary(shp_r)
+idx <- is.na(shp_r)
+shp_r[idx]<-1
+summary(shp_r)
+spplot(shp_r)
+plot(shp_r)
+plot(ngb_up2, add=TRUE)
+plot(som_stack[["Subsidence"]], add=TRUE)
+plot(ngb_up2, add=TRUE, show.legend=FALSE)
+plot(som_stack[["Subsidence"]], add=TRUE, show.legend=FALSE)
+plot(shp_r, show.legend=FALSE)
+require(ggmap)
+brady_map <- get_stamenmap(bbox = bbox(shp), maptype = "terrain",
+crop = FALSE,
+zoom = 6)
+require(sp)
+require(sf)
+unname(st_bbox(shp))
+unname(st_bbox(spTransform(shp, crs=CRS("+init=epsg:28992"))))
+unname(st_bbox(spTransform(shp, crs=crs("+init=epsg:28992"))))
+CRS("+init=epsg:28992")
+unname(st_bbox(spTransform(shp, crs=crs("+init=epsg:4326"))))
+unname(st_bbox(spTransform(shp, crs=CRS("+init=epsg:4326"))))
+unname(st_bbox(spTransform(shp, CRS("+init=epsg:4326"))))
+brady_map <- get_stamenmap(bbox = unname(st_bbox(spTransform(shp, CRS("+init=epsg:4326")))), maptype = "terrain",
+crop = FALSE,
+zoom = 6)
+ggmap(brady_map)
+brady_map <- get_stamenmap(bbox = unname(st_bbox(spTransform(shp, CRS("+init=epsg:4326")))), maptype = "terrain",
+crop = FALSE,
+zoom = 8)
+ggmap(brady_map)
+brady_map <- get_stamenmap(bbox = unname(st_bbox(spTransform(shp, CRS("+init=epsg:4326")))), maptype = "terrain",
+crop = FALSE,
+zoom = 10)
+ggmap(brady_map)
+brady_map <- get_googlemap(bbox = unname(st_bbox(spTransform(shp, CRS("+init=epsg:4326")))), maptype = "terrain",
+crop = FALSE,
+zoom = 10)
+?register_google
+r3 <- som_df[c("x","y")]
+r3$s1 <- s3_100$unit.classif
+s3_100 <- simple_som(som_measures, som_df, grid=somgrid(3,3,"rectangular"),
+rlen=100, main_title = "SOM (3,3) rlen=100")
+r3$s1 <- s3_100$unit.classif
+som_measures
+som_df
+summary(som_df)
+idx <- !is.na(som_df["Faults"])
+som_df <- som_df[idx]
+summary(som_df)
+idx <- is.na(som_stack[["Faults"]])
+som_stack2 <- som_stack
+som_stack2[idx]<-NA
+som_df <- rasterToPoints(som_stack2)
+som_df <- as.data.frame(som_df)
+summary(som_df)
+s3_100 <- simple_som(som_measures, som_df, grid=somgrid(3,3,"rectangular"),
+rlen=100, main_title = "SOM (3,3) rlen=100")
+s3_500 <- simple_som(som_measures, som_df, grid=somgrid(3,3,"rectangular"), rlen=500, main_title = "SOM (3,3) rlen=500")
+r3$s1 <- s3_100$unit.classif
+r3$s2 <- s3_500$unit.classif
+s3_100 <- simple_som(som_measures, som_df2, grid=somgrid(3,3,"rectangular"),
+rlen=100, main_title = "SOM (3,3) rlen=100")
+r3 <- som_df[c("x", "y")]
+r3$s1 <- s3_100$unit.classif
+r3$s2 <- s3_500$unit.classif
+names(r3)  <- c("x", "y", "s3_100", "s3_500")
+coordinates(r3) <- ~ x+y
+proj4string(r3)<- crs(som_stack2[[1]])
+gridded(r3)<-TRUE
+spplot(r3)
+s3_1000 <- simple_som(som_measures, som_df, grid=somgrid(3,3,"rectangular"),
+rlen=1000, main_title = "SOM (3,3) rlen=1000")
+r3 <- som_df[c("x", "y")]
+r3$s1 <- s3_100$unit.classif
+r3$s2 <- s3_500$unit.classif
+r3$s3 <- s3_1000$unit.classif
+names(r3)  <- c("x", "y", "s3_100", "s3_500", "s3_1k")
+coordinates(r3) <- ~ x+y
+proj4string(r3)<- crs(som_stack2[[1]])
+gridded(r3)<-TRUE
+spplot(r3)
+plot(s3_1000, main="SOM v3 (1,000 iterations)")
+save.image("D:/git/doe-r/doe-som/som_output02.RData")
+spplot(r3)
+View(som_stack2)
+som_stack
+som_stack2
+som_stack3 <- stack("doe-imagestacks/som_stack.gri")
+som_stack3
+s_bool <- (s3_1000<6 | s3_1000 ==7)
+s_bool <- (s3_1000[1]<6 | s3_1000[1] ==7)
+spplot(s_bool)
+typeof(s_bool)
+s_bool <- s3_1000
+s_bool[1]<-FALSE
+s_bool[s3_1000<6] <- TRUE
+s_bool
+View(s3_1000)
+s_result <- r3[["s3_1k"]]
+s_bool <- s_result<6 | ss_result==7
+s_bool <- s_result<6 | s_result==7
+spplot(s_bool)
+s_result <- rasterize(s_result, r2, method="ngb")
+s_result <- rasterize(s_result, som_stack, method="ngb")
+s_result
+r3
+s_result <- rasterize(r3, som_stack, method="ngb")
+s_bool <- s_result[3]<6 | s_result[3]==7
+spplot(s_bool)
+s_bool<-s_result[3]
+spplot(s_bool)
+s_bool<-s_result[[3]
+]
+spplot(s_bool)
+s_bool2 <- s_bool
+s_bool2[[1]<-FALSE
+s_bool2[[1]]<-FALSE
+s_bool2[1]<-FALSE
+spplot(s_bool2)
+s_bool2
+s_bool2 <- s_result[["s3_1000"]]
+s_bool2 <- s_result[["s3_1k"]]
+s_bool2[s_bool2<6 | s_bool2==7] <- 1
+s_bool2[s_bool2<1] <- 0
+spplot(s_bool2)
+s_bool2[s_bool2>1] <- 0
+spplot(s_bool2)
+spplot(som_stack3)
+name(s_bool2) <- "Geothermal"
+names(s_bool2) <- "Geothermal"
+som_stack3 <- stack(s_bool2, som_stack3)
+doe_writeRaster(som_stack3, "doe-som/brady_som_output")
+spplot(som_stack3)
+savehistory("D:/git/doe-r/latest_history_20200622.txt")
