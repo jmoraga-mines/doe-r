@@ -2,3 +2,10 @@
 .Rhistory
 .RData
 .Ruserdata
+*.grd
+*.gri
+*.hdr
+*.stx
+doe-som/
+doe-images/
+old_scripts/
